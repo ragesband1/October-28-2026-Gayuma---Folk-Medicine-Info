@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gayuma - Folk Medicine Info</title>
+<style>
+  body{
+    background:#070a0f;
+    color:#e8e8e8;
+    font-family: Inter, Arial, sans-serif;
+    margin:0;
+    padding:40px 20px;
+    display:flex;
+    justify-content:center;
+  }
+  .container{ max-width:900px; width:100%; }
+  .bio-card{
+    background: linear-gradient(180deg, #121827, #0e121c);
+    border:2px solid #2a2a2a;
+    padding:28px;
+    border-radius:24px;
+    cursor:pointer;
+    filter: saturate(0.3);
+    transition: filter 2s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    line-height:1.7;
+  }
+  .bio-card:hover{
+    filter: saturate(1.2);
+    box-shadow: 0 0 18px #00ffd0, 0 0 36px #ff00ff;
+    transform: translateY(-2px);
+  }
+  .bio-card.active{
+    filter: saturate(2);
+    animation: neonBlink 0.7s infinite alternate, shake 0.2s infinite;
+  }
+  @keyframes neonBlink{
+    0%{ box-shadow: 0 0 10px #ff00ff, 0 0 30px #00ffff; border-color:#ff00ff; }
+    50%{ box-shadow: 0 0 25px #00ff88, 0 0 50px #ff0000; border-color:#00ffff; }
+    100%{ box-shadow: 0 0 15px #ffff00, 0 0 45px #ff00ff; border-color:#ffff00; }
+  }
+  @keyframes shake{ 0%{transform:translate(0)} 25%{transform:translate(1px,-1px)} 75%{transform:translate(-1px,1px)} 100%{transform:translate(0)} }
+  
+  .shockwave{
+    position:fixed;
+    width:10px; height:10px;
+    border-radius:50%;
+    pointer-events:none;
+    border:4px solid;
+    animation: shock 1.2s ease-out forwards;
+  }
+  @keyframes shock{
+    0%{ transform:translate(-50%,-50%) scale(0); opacity:1; border-color:#ff00ff; }
+    100%{ transform:translate(-50%,-50%) scale(35); opacity:0; border-color:#00ffff; }
+  }
+
+  h1{ text-align:center; letter-spacing:1px; }
+  .small{ opacity:0.6; font-size:12px; text-align:center; margin-top:12px; }
+
+  dialog{
+    background:#10131c;
+    color:#eee;
+    border:1px solid #333;
+    border-radius:18px;
+    padding:22px;
+    max-width:720px;
+    width:92%;
+    box-shadow:0 0 50px rgba(255,0,255,0.4);
+  }
+  dialog::backdrop{ background:rgba(0,0,0,0.85); backdrop-filter: blur(4px); }
+  .gallery{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px,1fr));
+    gap:12px;
+    margin:14px 0;
+  }
+  .gallery div{
+    background:#1a1f2e;
+    height:130px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px dashed #444;
+    font-size:12px;
+    opacity:0.8;
+    overflow:hidden;
+  }
+  .gallery img{ width:100%; height:100%; object-fit:cover; border-radius:14px; }
+  .messages{ display:flex; flex-direction:column; gap:8px; max-height:220px; overflow:auto; margin-top:12px; }
+  .msg{ background:#1e2436; padding:10px 14px; border-radius:12px; border-left:4px solid #ff4fd8; animation: pop 0.35s ease; }
+  @keyframes pop{ from{transform:translateY(8px); opacity:0} to{transform:translateY(0); opacity:1} }
+  .closeBtn{ margin-top:16px; padding:10px 18px; border-radius:10px; border:none; background:#fff; color:#000; cursor:pointer; font-weight:bold; }
+  table{ width:100%; border-collapse:collapse; margin-top:12px; font-size:14px; }
+  th,td{ border:1px solid #2a2a2a; padding:8px; text-align:left; }
+  th{ background:#1a1f2e; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>GAYUMA - FOLKLORE & SCIENCE</h1>
+  <div class="bio-card" id="bioCard">
+    <p><strong>Ang mga tinatawag na gayuma o love potion sa totoong buhay ay bahagi ng folk medicine, shamanism, at antropolohiya ng Pilipinas. Sa agham at totoong buhay, walang likido o spell na pwedeng pumatay ng free will ng isang tao para sapilitan siyang magmahal. Ang totoong "talab" nito ay nanggagaling sa psychological placebo effect, sensory association (amoy), at pananampalataya o intention ng tao.</strong></p>
+    
+    <h3>Saan sa Pilipinas Makikita at Paano Ginagawa?</h3>
+    <p><strong>1. Siquijor (Central Visayas - Region VII)</strong><br>
+    Sino ang gumagawa: Ang mga local healers na tinatawag na Mananambal.<br>
+    Paano ginagawa: Nagmumula ang mga sangkap sa mga tuyong ugat ng punong-kahoy, balat ng halaman (barks), natatanging bulaklak, at halaman mula sa kagubatan o ilalim ng dagat. Ang Ritual: Kinokolekta ang mga sangkap tuwing mga partikular na araw ng Biyernes sa panahon ng Cuaresma (Holy Week) habang nagdarasal ng orasyon. Pagkatapos patuyuin, inilalagay ang mga ito sa maliliit na bote.</p>
+
+    <p><strong>2. Quiapo, Manila (NCR) & Mt. Banahaw (CALABARZON - Region IV-A)</strong><br>
+    Sino ang gumagawa: Mga albularyo at tindera ng mga esoteric goods sa paligid ng Quiapo Church.<br>
+    Paano ginagawa: Pinagsasama-sama ang mga herbal oils, langis ng niyog na pinakuluan sa piling mga araw, at ibinababad kasama ng maliliit na papel na may nakasulat na Latin o orasyon.</p>
+
+    <table>
+      <tr><th>Uri ng Gayuma</th><th>Paano Ginagamit</th><th>Amoy at Hitsura</th><th>Paano Inilalarawan ang "Talab"</th></tr>
+      <tr><td>Pahid / Oil Base</td><td>Ipinapahid sa pulso, leeg, o damit</td><td>Bote na may tuyong ugat/kahoy, amoy herbal/pabango</td><td>Scent memory, malakas na impresyon sa utak</td></tr>
+      <tr><td>Buhos / Spray</td><td>Isinisiwis sa kwarto o damit</td><td>Malinaw/dilaw, amoy bulaklak/sandalwood</td><td>Confidence booster</td></tr>
+      <tr><td>Inumin / Ingestion (Mapanganib)</td><td>Hinihalo raw sa inumin - BABALA: Pwedeng makalason!</td><td>Herbal tea, lasang dahon/lupa</td><td>Delikado, iwasan</td></tr>
+    </table>
+
+    <h3>Paano Ito Nagiging "Effective" sa Totoong Buhay?</h3>
+    <p><strong>Placebo & Self-Confidence:</strong> Nawawala hiya at kaba, nagiging mas confident.<br>
+    <strong>Scent Memory & Pheromones:</strong> Magandang amoy ay nakaka-attract sa sikolohiya.<br>
+    <strong>Intentionality:</strong> Pagtutuon ng pansin sa intensyon na maging mabuting partner.</p>
+    <p class="small">CLICK THIS CARD TO SEE DIALOG BOX ⬆️</p>
+  </div>
+</div>
+
+<dialog id="loveDialog">
+  <h3 style="margin:0">Dialogue - Consensual Connections</h3>
+  <p style="opacity:0.7;font-size:13px">Palitan ang placeholders ng pictures na may pahintulot nila. Hindi totoo ang sapilitang gayuma - respeto at free will pa rin ang basehan.</p>
+  
+  <div class="gallery" id="gallery">
+    <div><img src="https://via.placeholder.com/300x300?text=Partner+1+Placeholder" alt="partner placeholder"></div>
+    <div><img src="https://via.placeholder.com/300x300?text=Partner+2+Placeholder" alt="partner placeholder"></div>
+    <div><img src="https://via.placeholder.com/300x300?text=Partner+3+Placeholder" alt="partner placeholder"></div>
+    <div><img src="https://via.placeholder.com/300x300?text=Partner+4+Placeholder" alt="partner placeholder"></div>
+  </div>
+
+  <div class="messages" id="messages"></div>
+  <button class="closeBtn" onclick="document.getElementById('loveDialog').close()">Close</button>
+</dialog>
+
+<script>
+const card = document.getElementById('bioCard');
+const dialog = document.getElementById('loveDialog');
+const messagesBox = document.getElementById('messages');
+
+const loves = [
+  "I love you million ❤️ - from Million",
+  "I love you billion ❤️ - from Billion",
+  "I love you trillion ❤️ - from Trillion",
+  "I love you forever - mutual respect and honesty",
+  "I love you - drama-free and consensual",
+  "Exploring polyamory with 100% single, honest love"
+];
+
+card.addEventListener('click', (e) => {
+  card.classList.add('active');
+  
+  // rainbow shockwaves
+  for(let i=0;i<4;i++){
+    const wave = document.createElement('div');
+    wave.className='shockwave';
+    wave.style.left = e.clientX + (Math.random()*40-20) + 'px';
+    wave.style.top = e.clientY + (Math.random()*40-20) + 'px';
+    document.body.appendChild(wave);
+    setTimeout(()=>wave.remove(),1200);
+  }
+
+  setTimeout(()=>{
+    dialog.showModal();
+    messagesBox.innerHTML='';
+    let idx=0;
+    const interval = setInterval(()=>{
+      if(idx>=loves.length){ clearInterval(interval); return; }
+      const d=document.createElement('div');
+      d.className='msg';
+      d.textContent=loves[idx];
+      messagesBox.appendChild(d);
+      idx++;
+    }, 600);
+  }, 300);
+});
+
+dialog.addEventListener('close', ()=> card.classList.remove('active'));
+</script>
+</body>
+</html>
